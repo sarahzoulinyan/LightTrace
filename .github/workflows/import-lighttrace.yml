@@ -1,6 +1,7 @@
 name: Import LightTrace source
 
 on:
+  workflow_dispatch:
   push:
     paths:
       - ".github/workflows/import-lighttrace.yml"
