@@ -4,6 +4,7 @@
 ![Python](https://img.shields.io/badge/Python-3.10-blue.svg)
 ![GIS](https://img.shields.io/badge/GIS-Light--field%20mapping-green.svg)
 ![Status](https://img.shields.io/badge/Status-Research%20prototype-orange.svg)
+[![Tests](https://github.com/sarahzoulinyan/LightTrace/actions/workflows/tests.yml/badge.svg)](https://github.com/sarahzoulinyan/LightTrace/actions/workflows/tests.yml)
 
 LightTrace is an interactive environmental-monitoring application for collecting, modeling, visualizing, and mapping artificial light at night. It converts streetlight records and field-measured Sky Quality Meter (SQM) observations into explorable light-field maps, helping researchers, planners, and communities trace how illumination spreads across an area.
 
@@ -138,6 +139,18 @@ conda env create -f environment.yml
 conda activate lighttrace
 python main.py
 ```
+
+### Tests
+
+The coordinate-file parser uses only the Python standard library, so its test
+suite can run without installing the full desktop and machine-learning stack:
+
+```bash
+python -m unittest discover -s tests -v
+```
+
+GitHub Actions runs the tests on Python 3.10 and 3.12 for every pull request and
+every push to `main`.
 
 ## Performance and configuration notes
 
