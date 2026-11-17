@@ -23,6 +23,7 @@ import webview
 from tkhtmlview import HTMLLabel
 import json
 import random
+from coordinate_io import load_coordinates
 
 
 class App():
@@ -143,52 +144,17 @@ class App():
                     self.marker_list2.append(marker)
         except FileNotFoundError:
             print("no such file")
-        # Open the file
-        with open('maps_files/converted_coordinates (Alachua).txt', 'r') as file:
-            # Read each line in the file
-            lines = file.readlines()
-        # Create an empty list to store the coordinates
-        coordinates = []
-        # Iterate over each line of data
-        for line in lines:
-            # Use the split() function to separate the coordinates in each line
-            # Assuming the coordinates are comma-separated and enclosed in parentheses
-            # Remove the newline character from each line before splitting
-            parts = line.strip().split(',')
-            # Extract the coordinates from the split result and convert them to floating-point numbers
-            # Get the first coordinate using index 0 and remove the left parenthesis
-            latitude = float(parts[0].lstrip('('))
-            # Get the second coordinate using index 1, and remove the right parenthesis and any whitespace characters
-            longitude = float(parts[1].rstrip(')'))
-            # Add the coordinates to the list
-            coordinates.append((latitude, longitude))
+        coordinates = load_coordinates(
+            'maps_files/converted_coordinates (Alachua).txt'
+        )
         polygon_1 = self.map_widget.set_polygon(coordinates,
                                         fill_color=None,
                                         outline_color="red",
                                         border_width=2,
                                         name="Alachua county")
-        # Open the file
-        with open('maps_files/converted_coordinates (Orange).txt', 'r') as file:
-            # Read each line in the file
-            lines = file.readlines()
-        # Create an empty list to store the coordinates
-        coordinates = []
-        # Iterate over each line of data
-        for line in lines:
-            # Use the split() function to separate the coordinates in each line
-            # Assuming the coordinates are comma-separated and enclosed in parentheses
-            # Remove the newline character from each line before splitting
-            parts = line.strip().split(',')
-
-            # Extract the coordinates from the split result and convert them to floating-point numbers
-            # Get the first coordinate using index 0 and remove the left parenthesis
-            latitude = float(parts[0].lstrip('('))
-            
-            # Get the second coordinate using index 1, and remove the right parenthesis and any whitespace characters
-            longitude = float(parts[1].rstrip(')'))
-
-            # Add the coordinates to the list
-            coordinates.append((latitude, longitude))
+        coordinates = load_coordinates(
+            'maps_files/converted_coordinates (Orange).txt'
+        )
 
 
         polygon_2 = self.map_widget.set_polygon(coordinates,
@@ -198,30 +164,9 @@ class App():
                                         name="Orange county")
 
 
-        # Open the file
-        with open('maps_files/converted_coordinates (St_Johns).txt', 'r') as file:
-            # Read each line in the file
-            lines = file.readlines()
-
-        # Create an empty list to store the coordinates
-        coordinates = []
-
-        # Iterate over each line of data
-        for line in lines:
-            # Use the split() function to separate the coordinates in each line
-            # Assuming the coordinates are comma-separated and enclosed in parentheses
-            # Remove the newline character from each line before splitting
-            parts = line.strip().split(',')
-
-            # Extract the coordinates from the split result and convert them to floating-point numbers
-            # Get the first coordinate using index 0 and remove the left parenthesis
-            latitude = float(parts[0].lstrip('('))
-            
-            # Get the second coordinate using index 1, and remove the right parenthesis and any whitespace characters
-            longitude = float(parts[1].rstrip(')'))
-
-            # Add the coordinates to the list
-            coordinates.append((latitude, longitude))
+        coordinates = load_coordinates(
+            'maps_files/converted_coordinates (St_Johns).txt'
+        )
 
 
         polygon_3 = self.map_widget.set_polygon(coordinates,
